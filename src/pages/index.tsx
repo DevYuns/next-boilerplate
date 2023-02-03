@@ -1,5 +1,15 @@
 import Head from 'next/head';
 import type {ReactElement} from 'react';
+import styled from '@emotion/styled';
+
+const Container = styled.main`
+  height: 100%;
+  background-color: ${({theme}) => theme.bg.basic};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function Home(): ReactElement {
   return (
@@ -10,9 +20,9 @@ export default function Home(): ReactElement {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <Container>
         <p>Hello next</p>
-      </main>
+      </Container>
     </>
   );
 }
