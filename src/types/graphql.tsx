@@ -57,6 +57,8 @@ export type Query = {
   __typename?: 'Query';
   /** Fetch the Post with given id */
   post?: Maybe<Post>;
+  /** Get all posts */
+  posts?: Maybe<Array<Maybe<Post>>>;
   /** Fetch the user with given id */
   user?: Maybe<User>;
 };

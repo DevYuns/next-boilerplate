@@ -11,3 +11,13 @@ export const post = queryField('post', {
     return await ctx.prisma.post.findUnique({where: {id}});
   },
 });
+
+export const posts = queryField((t) => {
+  t.list.field('posts', {
+    type: 'Post',
+    description: 'Get all posts',
+    resolve: async (_, __, ctx) => {
+      return await ctx.prisma.post.findMany();
+    },
+  });
+});

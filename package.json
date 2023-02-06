@@ -10,6 +10,8 @@
     "relay": "relay-compiler",
     "relay-watch": "yarn relay-compiler --watch",
     "codegen": "graphql-codegen --config codegen.yml",
+    "migrate": "prisma migrate deploy --schema=./server/prisma/schema.prisma",
+    "migrate:dev": "prisma migrate dev --schema=./server/prisma/schema.prisma",
     "generate:client": "yarn codegen && yarn relay",
     "generate:nexus": "ts-node --transpile-only ./server/schema",
     "generate:prisma": "prisma generate --schema=./server/prisma/schema.prisma",
