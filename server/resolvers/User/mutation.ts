@@ -1,4 +1,4 @@
-import {inputObjectType, mutationField, nonNull, stringArg} from 'nexus';
+import {idArg, inputObjectType, mutationField, nonNull} from 'nexus';
 
 import invariant from 'tiny-invariant';
 
@@ -15,7 +15,7 @@ export const UserUpdateInputType = inputObjectType({
 export const updateUser = mutationField('updateUser', {
   type: 'User',
   args: {
-    userId: stringArg(),
+    userId: idArg(),
     user: nonNull(UserUpdateInputType),
   },
   description: 'update the user fields',

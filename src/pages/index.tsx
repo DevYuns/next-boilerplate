@@ -1,17 +1,48 @@
-import Head from 'next/head';
-import type {ReactElement} from 'react';
-import styled from '@emotion/styled';
+import {Suspense, useEffect} from 'react';
+import {usePreloadedQuery, useQueryLoader} from 'react-relay';
 
-const Container = styled.main`
+import Head from 'next/head';
+import type {PreloadedQuery} from 'react-relay';
+import type {ReactElement} from 'react';
+import type {UserQuery} from '@/__generated__/UserQuery.graphql';
+import styled from '@emotion/styled';
+import {userQuery} from '@/relay/queries/User';
+
+const Container = styled.div`
   height: 100%;
-  background-color: ${({theme}) => theme.bg.basic};
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 `;
 
-export default function Home(): ReactElement {
+type Props = {
+  queryReference: PreloadedQuery<UserQuery, Record<string, unknown>>;
+};
+
+function Page({queryReference}: Props): ReactElement {
+  const response = usePreloadedQuery<UserQuery>(userQuery, queryReference);
+
+  return (
+    <div>
+      <p>Hello User</p>
+      <p>{response.user?.email}</p>
+    </div>
+  );
+}
+
+export default function PageRoot(): ReactElement {
+  const [queryReference, loadQuery, disposeQuery] =
+    useQueryLoader<UserQuery>(userQuery);
+
+  useEffect(() => {
+    loadQuery({id: 'cldr3sm0y00008bajaxaxplo8'});
+
+    return () => {
+      disposeQuery();
+    };
+  }, [disposeQuery, loadQuery]);
+
   return (
     <>
       <Head>
@@ -21,7 +52,9 @@ export default function Home(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <p>Hello next</p>
+        <Suspense fallback={<div>loading...</div>}>
+          {queryReference && <Page queryReference={queryReference} />}
+        </Suspense>
       </Container>
     </>
   );

@@ -1,132 +1,76 @@
 import {css} from '@emotion/react';
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
 export const globalStyles = css`
-  html,
+  blockquote,
   body,
-  div,
-  span,
-  applet,
-  object,
-  iframe,
+  dd,
+  dl,
+  dt,
+  fieldset,
+  figure,
   h1,
   h2,
   h3,
   h4,
   h5,
   h6,
-  p,
-  blockquote,
-  pre,
-  a,
-  abbr,
-  acronym,
-  address,
-  big,
-  cite,
-  code,
-  del,
-  dfn,
-  em,
-  img,
-  ins,
-  kbd,
-  q,
-  s,
-  samp,
-  small,
-  strike,
-  strong,
-  sub,
-  sup,
-  tt,
-  var,
-  b,
-  u,
-  i,
-  center,
-  dl,
-  dt,
-  dd,
-  ol,
-  ul,
-  li,
-  fieldset,
-  form,
-  label,
+  hr,
+  html,
+  iframe,
   legend,
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td,
-  article,
-  aside,
-  canvas,
-  details,
-  embed,
-  figure,
-  figcaption,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  output,
-  ruby,
-  section,
-  summary,
-  time,
-  mark,
-  audio,
-  video {
+  li,
+  ol,
+  p,
+  pre,
+  textarea,
+  ul {
     margin: 0;
     padding: 0;
-    border: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+    font-weight: 400;
   }
-  /* HTML5 display-role reset for older browsers */
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  section {
-    display: block;
-  }
-  body {
-    line-height: 1;
-  }
-  ol,
   ul {
     list-style: none;
   }
-  blockquote,
-  q {
-    quotes: none;
+  button,
+  input,
+  select {
+    margin: 0;
   }
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
+  html,
+  body,
+  #__next {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  *,
+  :after,
+  :before {
+    box-sizing: inherit;
+  }
+  img,
+  video {
+    height: auto;
+    max-width: 100%;
+  }
+  iframe {
+    border: 0;
   }
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  td,
+  th {
+    padding: 0;
   }
 `;

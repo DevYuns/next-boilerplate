@@ -1,17 +1,16 @@
 import {ApolloServer} from '@apollo/server';
-import type {Context} from './context';
 import {applyMiddleware} from 'graphql-middleware';
 import {schema} from './schema';
 
 export const schemaWithMiddleware =
   process.env.NODE_ENV === 'development' ? schema : applyMiddleware(schema);
 
-const apolloServer = new ApolloServer<Context>({
+const apolloServer = new ApolloServer({
   schema: schemaWithMiddleware,
   introspection: process.env.NODE_ENV !== 'production',
 });
 
-// https://github.com/apollo-server-integrations/apollo-server-integration-next
+// For serverless function
 apolloServer.startInBackgroundHandlingStartupErrorsByLoggingAndFailingAllRequests();
 
 export {apolloServer};
